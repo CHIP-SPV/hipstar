@@ -612,9 +612,6 @@ protected:
   bool Deleted_ = false;
 #endif
 
-  // reference count
-  size_t *Refc_;
-
   /**
    * @brief Events are always created with a context
    *
@@ -639,9 +636,9 @@ public:
   CHIPEventFlags getFlags() { return Flags_; }
   std::mutex EventMtx;
   std::string Msg;
-  size_t getCHIPRefc();
-  virtual void decreaseRefCount(std::string Reason);
-  virtual void increaseRefCount(std::string Reason);
+  virtual size_t getCHIPRefc() = 0;
+  virtual void decreaseRefCount(std::string Reason) {}
+  virtual void increaseRefCount(std::string Reason) {}
   virtual ~CHIPEvent() = default;
   // Optionally provide a field for origin of this event
   /**
@@ -1145,6 +1142,10 @@ public:
   CHIPExecItem(dim3 GirdDim, dim3 BlockDim, size_t SharedMem,
                hipStream_t ChipQueue);
 
+  void setupDims(dim3 GridDim, dim3 BlockDim) {
+    GridDim_ = GridDim;
+    BlockDim_ = BlockDim;
+  };
   /**
    * @brief Set the Kernel object
    *
@@ -1294,13 +1295,6 @@ public:
 
   CHIPQueue *createQueueAndRegister(const uintptr_t *NativeHandles,
                                     const size_t NumHandles);
-
-  void removeContext(CHIPContext *Ctx);
-  virtual CHIPContext *createContext() = 0;
-  CHIPContext *createContextAndRegister() {
-    Ctx_ = createContext();
-    return Ctx_;
-  }
 
   size_t getMaxMallocSize() {
     if (MaxMallocSize_ < 1)
@@ -2059,6 +2053,12 @@ public:
   }
 
   CHIPDevice *PerThreadQueueForDevice = nullptr;
+
+  virtual CHIPEvent *enqueueNativeGraph(CHIPGraphNative *NativeGraph) {
+    return nullptr;
+  }
+  virtual CHIPGraphNative *createNativeGraph() { return nullptr; }
+  virtual void destroyNativeGraph(CHIPGraphNative *) { return; }
 
   // I want others to be able to lock this queue?
   std::mutex QueueMtx;

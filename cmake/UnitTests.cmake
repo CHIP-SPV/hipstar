@@ -151,6 +151,74 @@ list(APPEND FAILING_FOR_ALL "Unit_deviceFunctions_CompileTest_atomicXor_system_u
 list(APPEND FAILING_FOR_ALL "hipStreamSemantics") # SEGFAULT - likely due to main thread exiting without calling join
 list(APPEND FAILING_FOR_ALL "Unit_hipMultiStream_multimeDevice") # SEGFAULT - likely due to multiple GPU support
 
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddDependencies_NegTest") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddEventRecordNode_MultipleRun") # subprocess aborted
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddEventWaitNode_MultipleRun") # subprocess aborted
+list(APPEND FAILING_FOR_ALL "Unit_hipGraph_BasicFunctional") # subprocess aborted
+list(APPEND FAILING_FOR_ALL "Unit_hipGraph_SimpleGraphWithKernel") # subprocess aborted
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddMemcpyNode_BasicFunctional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphInstantiateWithFlags_DependencyGraph") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddHostNode_ClonedGraphwithHostNode") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemory") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalConstMemory") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemoryWithKernel") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecHostNodeSetParams_ClonedGraphwithHostNode") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecHostNodeSetParams_BasicFunc") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalMemory") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalConstMemory") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddMemcpyNodeToSymbol_MemcpyToSymbolNodeWithKernel") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecMemsetNodeSetParams_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Negative") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphDestroyNode_DestroyDependencyNode") # (SEGFAULT)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphGetNodes_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphGetNodes_CapturedStream") # subprocess aborted
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphGetRootNodes_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphGetRootNodes_CapturedStream") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddMemcpyNode1D_Negative") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddChildGraphNode_OrgGraphAsChildGraph") # (SEGFAULT)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddChildGraphNode_CloneChildGraph") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddChildGraphNode_MultipleChildNodes") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddChildGraphNode_SingleChildNode") # (SEGFAULT)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecMemcpyNodeSetParams1D_Negative") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecMemcpyNodeSetParams1D_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphGetEdges_Functionality") # (Timeout)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphRemoveDependencies_Func_Manual") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphRemoveDependencies_Func_StrmCapture") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphRemoveDependencies_ChangeComputeFunc") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecUpdate_Negative_TypeChange") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecUpdate_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecEventRecordNodeSetEvent_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecEventRecordNodeSetEvent_VerifyEventNotChanged") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphMemsetNodeSetParams_InvalidParams") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecMemcpyNodeSetParams_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Negative") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecEventWaitNodeSetEvent_SetAndVerifyMemory") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecEventWaitNodeSetEvent_VerifyEventNotChanged") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphMemcpyNodeSetParams_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphAddKernelNode_Negative") # SEGFAULT
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphKernelNodeGetParams_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphKernelNodeSetParams_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphKernelNodeGetSetParams_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecKernelNodeSetParams_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphLaunch_Negative") # (SEGFAULT)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphMemcpyNodeSetParams1D_Negative") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphNodeGetDependentNodes_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphNodeGetDependencies_Functional") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecChildGraphNodeSetParams_Negative") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecChildGraphNodeSetParams_BasicFunc") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphExecChildGraphNodeSetParams_ChildTopology") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphRetainUserObject_Functional_1") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphRetainUserObject_Functional_2") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphRetainUserObject_Negative") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphReleaseUserObject_Negative") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphRetainUserObject_Negative_Basic") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipGraphRetainUserObject_Negative_Null_Object") # (Failed)
+list(APPEND FAILING_FOR_ALL "Unit_hipStreamBeginCapture_BasicFunctional") # Subprocess aborted
+
 # CPU OpenCL Unit Test Failures
 list(APPEND CPU_OPENCL_FAILED_TESTS "hipStreamSemantics") # SEGFAULT
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipTextureFetch_vector") # LLVM-16 Failures
@@ -166,72 +234,6 @@ list(APPEND CPU_OPENCL_FAILED_TESTS "unroll") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "hipConstantTestDeviceSymbol") # Subprocess aborted
 list(APPEND CPU_OPENCL_FAILED_TESTS "cuda-simpleCallback") # SEGFAULT
 list(APPEND CPU_OPENCL_FAILED_TESTS "cuda-qrng") # Subprocess aborted
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEmptyNode_NegTest") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddDependencies_NegTest") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEventRecordNode_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEventWaitNode_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraph_BasicFunctional") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraph_SimpleGraphWithKernel") # Subprocess aborted
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNode_BasicFunctional") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphClone_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_Negative") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_DependencyGraph") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddHostNode_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemory") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalConstMemory") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemoryWithKernel") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphChildGraphNodeGetGraph_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeFindInClone_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_ClonedGraphwithHostNode") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_BasicFunc") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalMemory") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalConstMemory") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_MemcpyToSymbolNodeWithKernel") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Functional") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphDestroyNode_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphDestroyNode_DestroyDependencyNode") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetNodes_Functional") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetNodes_CapturedStream") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetNodes_ParamValidation") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_Functional") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_CapturedStream") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_ParamValidation") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphHostNodeSetParams_Negative") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNode1D_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_OrgGraphAsChildGraph") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_CloneChildGraph") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_MultipleChildNodes") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_SingleChildNode") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetType_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetEdges_Functionality") # Subprocess aborted
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetEdges_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Func_StrmCapture") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_ChangeComputeFunc") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphInstantiate_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_Basic") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_TypeChange") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventWaitNodeSetEvent_Negative") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemsetNodeGetParams_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemsetNodeSetParams_InvalidParams") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventRecordNodeGetEvent_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventRecordNodeSetEvent_Negative") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventWaitNodeGetEvent_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_BasicFunctional") # Subprocess aborted
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_hipStreamPerThread") # SEGFAULT
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_Negative") # SEGFAULT
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_Basic") # Failed
@@ -262,35 +264,6 @@ list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_UniqueID") # F
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_ArgValidation") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamEndCapture_Negative") # SEGFAULT
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamEndCapture_Thread_Negative") # Subprocess aborted
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_SetAndVerifyMemory") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemsetNode_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddKernelNode_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Functional") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeGetParams_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeGetSetParams_Functional") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphLaunch_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams1D_Negative") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_ParamValidation") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_Functional") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_ParamValidation") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphHostNodeGetParams_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_BasicFunc") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_ChildTopology") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_BasicFunctional") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_hipStreamPerThread") # SEGFAULT
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_UniqueID") # Failed
@@ -303,12 +276,6 @@ list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipUserObjectCreate_Negative") # Faile
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipUserObjectRelease_Negative") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipUserObjectRetain_Negative") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipUserObj_Negative_Test") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_1") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_2") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphReleaseUserObject_Negative") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Basic") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Null_Object") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - int") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - float") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - double") # Failed
@@ -526,7 +493,6 @@ list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipEvent") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipMallocPitch_KernelLaunch - int") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipMallocPitch_KernelLaunch - float") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipMallocPitch_KernelLaunch - double") # Failed
-list(APPEND CPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddHostNode_ClonedGraphwithHostNode") # Failed
 list(APPEND CPU_OPENCL_FAILED_TESTS "syncthreadsExitedThreads") # Timeout
 list(APPEND CPU_OPENCL_FAILED_TESTS "hipMultiThreadAddCallback") # SEGFAULT
 
@@ -535,73 +501,6 @@ list(APPEND IGPU_OPENCL_FAILED_TESTS "hipStreamSemantics") # SEGFAULT
 list(APPEND IGPU_OPENCL_FAILED_TESTS "deviceMallocCompile") # Unimplemented
 list(APPEND IGPU_OPENCL_FAILED_TESTS "cuda-simpleCallback") # SEGFAULT
 list(APPEND IGPU_OPENCL_FAILED_TESTS "cuda-qrng") # Subprocess aborted
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEmptyNode_NegTest") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddDependencies_NegTest") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEventRecordNode_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEventWaitNode_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraph_BasicFunctional") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraph_SimpleGraphWithKernel") # Subprocess aborted
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNode_BasicFunctional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphClone_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_Negative") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_DependencyGraph") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddHostNode_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddHostNode_ClonedGraphwithHostNode") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemory") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalConstMemory") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemoryWithKernel") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphChildGraphNodeGetGraph_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeFindInClone_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_ClonedGraphwithHostNode") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_BasicFunc") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalMemory") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalConstMemory") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_MemcpyToSymbolNodeWithKernel") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphDestroyNode_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphDestroyNode_DestroyDependencyNode") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetNodes_Functional") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetNodes_CapturedStream") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetNodes_ParamValidation") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_Functional") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_CapturedStream") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_ParamValidation") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphHostNodeSetParams_Negative") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNode1D_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_OrgGraphAsChildGraph") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_CloneChildGraph") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_MultipleChildNodes") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_SingleChildNode") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetType_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetEdges_Functionality") # Subprocess aborted
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetEdges_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Func_StrmCapture") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_ChangeComputeFunc") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphInstantiate_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_Basic") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_TypeChange") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventWaitNodeSetEvent_Negative") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemsetNodeGetParams_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemsetNodeSetParams_InvalidParams") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventRecordNodeGetEvent_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventRecordNodeSetEvent_Negative") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventWaitNodeGetEvent_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_BasicFunctional") # Subprocess aborted
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_hipStreamPerThread") # SEGFAULT
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_Negative") # SEGFAULT
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_Basic") # Failed
@@ -632,35 +531,6 @@ list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_UniqueID") # 
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_ArgValidation") # Failed
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamEndCapture_Negative") # SEGFAULT
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamEndCapture_Thread_Negative") # Subprocess aborted
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_SetAndVerifyMemory") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemsetNode_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddKernelNode_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Functional") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeGetParams_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeGetSetParams_Functional") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphLaunch_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams1D_Negative") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_ParamValidation") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_Functional") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_ParamValidation") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphHostNodeGetParams_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_BasicFunc") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_ChildTopology") # Failed
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_BasicFunctional") # Failed
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_hipStreamPerThread") # SEGFAULT
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_UniqueID") # Failed
@@ -673,12 +543,6 @@ list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipUserObjectCreate_Negative") # Fail
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipUserObjectRelease_Negative") # Failed
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipUserObjectRetain_Negative") # Failed
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipUserObj_Negative_Test") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_1") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_2") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphReleaseUserObject_Negative") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Basic") # Failed
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Null_Object") # Failed
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - int") # Failed
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - float") # Failed
 list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - double") # Failed
@@ -898,7 +762,6 @@ list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipStreamAddCallback_StrmSyncTiming")
 list(APPEND IGPU_OPENCL_FAILED_TESTS "cuda-simpleCallback") # SEGFAULT
 list(APPEND IGPU_OPENCL_FAILED_TESTS "stream") # SEGFAULT
 list(APPEND IGPU_OPENCL_FAILED_TESTS "hipKernelLaunchIsNonBlocking") # Timeout
-list(APPEND IGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Functional") # Subprocess aborted
 list(APPEND IGPU_OPENCL_FAILED_TESTS "syncthreadsExitedThreads") # Timeout
  # Timeout or out-of-resources error in the CI which emulates double FPs.
 list(APPEND IGPU_OPENCL_FAILED_TESTS "TestStlFunctionsDouble")
@@ -912,75 +775,6 @@ list(APPEND DGPU_OPENCL_FAILED_TESTS "cuda-asyncAPI") # Failed
 list(APPEND DGPU_OPENCL_FAILED_TESTS "cuda-matrixMul") # Failed
 list(APPEND DGPU_OPENCL_FAILED_TESTS "cuda-simpleCallback") # SEGFAULT
 list(APPEND DGPU_OPENCL_FAILED_TESTS "cuda-qrng") # Subprocess aborted
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEmptyNode_NegTest") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddDependencies_NegTest") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEventRecordNode_MultipleRun") # Timeout
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEventRecordNode_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEventWaitNode_MultipleRun") # Timeout
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddEventWaitNode_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraph_BasicFunctional") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraph_SimpleGraphWithKernel") # Subprocess aborted
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNode_BasicFunctional") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphClone_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_Negative") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_DependencyGraph") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddHostNode_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddHostNode_ClonedGraphwithHostNode") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemory") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalConstMemory") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemoryWithKernel") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphChildGraphNodeGetGraph_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeFindInClone_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_ClonedGraphwithHostNode") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_BasicFunc") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalMemory") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalConstMemory") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_MemcpyToSymbolNodeWithKernel") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphDestroyNode_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphDestroyNode_DestroyDependencyNode") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetNodes_Functional") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetNodes_CapturedStream") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetNodes_ParamValidation") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_Functional") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_CapturedStream") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_ParamValidation") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphHostNodeSetParams_Negative") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNode1D_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_OrgGraphAsChildGraph") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_CloneChildGraph") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_MultipleChildNodes") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_SingleChildNode") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetType_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetEdges_Functionality") # Timeout
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphGetEdges_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Func_StrmCapture") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_ChangeComputeFunc") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphInstantiate_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_Basic") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_TypeChange") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventWaitNodeSetEvent_Negative") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemsetNodeGetParams_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemsetNodeSetParams_InvalidParams") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventRecordNodeGetEvent_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventRecordNodeSetEvent_Negative") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphEventWaitNodeGetEvent_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_BasicFunctional") # Subprocess aborted
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_hipStreamPerThread") # SEGFAULT
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_Negative") # SEGFAULT
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamBeginCapture_Basic") # Failed
@@ -1011,35 +805,6 @@ list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_UniqueID") # 
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_ArgValidation") # Failed
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamEndCapture_Negative") # SEGFAULT
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamEndCapture_Thread_Negative") # Subprocess aborted
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_SetAndVerifyMemory") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddMemsetNode_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphAddKernelNode_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeGetParams_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphKernelNodeGetSetParams_Functional") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphLaunch_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams1D_Negative") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_ParamValidation") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_Functional") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_ParamValidation") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphHostNodeGetParams_Negative") # SEGFAULT
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_Negative") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_BasicFunc") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_ChildTopology") # Failed
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_BasicFunctional") # Failed
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_hipStreamPerThread") # SEGFAULT
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_UniqueID") # Failed
@@ -1052,12 +817,6 @@ list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipUserObjectCreate_Negative") # Fail
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipUserObjectRelease_Negative") # Failed
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipUserObjectRetain_Negative") # Failed
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipUserObj_Negative_Test") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_1") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_2") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphReleaseUserObject_Negative") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Basic") # Failed
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Null_Object") # Failed
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipMemcpy2DToArray_PinnedMemSameGPU") # Failed
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipMemcpy2DToArrayAsync_PinnedHostMemSameGpu") # Failed
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipMemcpy2D_H2D-D2D-D2H - int") # Failed
@@ -1315,7 +1074,6 @@ list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipMemsetFunctional_PartialSet_3D") #
 list(APPEND DGPU_OPENCL_FAILED_TESTS "hipMultiThreadAddCallback") # Subprocess aborted
 list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipMemset3DAsync_ConcurrencyMthread") # Timeout
 list(APPEND DGPU_OPENCL_FAILED_TESTS "hipKernelLaunchIsNonBlocking") # Timeout
-list(APPEND DGPU_OPENCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Functional") # Subprocess aborted
 list(APPEND DGPU_OPENCL_FAILED_TESTS "syncthreadsExitedThreads") # Timeout
 
 # dGPU Level Zero Unit Test Failures
@@ -1331,75 +1089,6 @@ list(APPEND DGPU_LEVEL0_FAILED_TESTS "cuda-clock") # SEGFAULT
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "cuda-simpleTemplates") # SEGFAULT
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "cuda-simpleCallback") # SEGFAULT
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "cuda-dwtHaar1D") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddEmptyNode_NegTest") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddDependencies_NegTest") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddEventRecordNode_MultipleRun") # Timeout
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddEventRecordNode_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddEventWaitNode_MultipleRun") # Timeout
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddEventWaitNode_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraph_BasicFunctional") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraph_SimpleGraphWithKernel") # Subprocess aborted
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNode_BasicFunctional") # Subprocess aborted
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphClone_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_Negative") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_DependencyGraph") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddHostNode_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddHostNode_ClonedGraphwithHostNode") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemory") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalConstMemory") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemoryWithKernel") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphChildGraphNodeGetGraph_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeFindInClone_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_ClonedGraphwithHostNode") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_BasicFunc") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalMemory") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalConstMemory") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_MemcpyToSymbolNodeWithKernel") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphDestroyNode_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphDestroyNode_DestroyDependencyNode") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetNodes_Functional") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetNodes_CapturedStream") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetNodes_ParamValidation") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetRootNodes_Functional") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetRootNodes_CapturedStream") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetRootNodes_ParamValidation") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphHostNodeSetParams_Negative") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNode1D_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_OrgGraphAsChildGraph") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_CloneChildGraph") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_MultipleChildNodes") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_SingleChildNode") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeGetType_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetEdges_Functionality") # Subprocess aborted
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetEdges_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Func_StrmCapture") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRemoveDependencies_ChangeComputeFunc") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphInstantiate_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_Basic") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_TypeChange") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecUpdate_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphEventWaitNodeSetEvent_Negative") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemsetNodeGetParams_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemsetNodeSetParams_InvalidParams") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphEventRecordNodeGetEvent_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphEventRecordNodeSetEvent_Negative") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphEventWaitNodeGetEvent_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamBeginCapture_BasicFunctional") # Subprocess aborted
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamBeginCapture_hipStreamPerThread") # SEGFAULT
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamBeginCapture_Negative") # SEGFAULT
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamBeginCapture_Basic") # Failed
@@ -1431,34 +1120,6 @@ list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_UniqueID") # 
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_ArgValidation") # Failed
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamEndCapture_Negative") # SEGFAULT
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamEndCapture_Thread_Negative") # Subprocess aborted
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_SetAndVerifyMemory") # Timeout
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemsetNode_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddKernelNode_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphKernelNodeGetParams_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphKernelNodeGetSetParams_Functional") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphLaunch_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams1D_Negative") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_ParamValidation") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_Functional") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_ParamValidation") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphHostNodeGetParams_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_Negative") # SEGFAULT
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_BasicFunc") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_ChildTopology") # Failed
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_BasicFunctional") # Failed
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_hipStreamPerThread") # SEGFAULT
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_UniqueID") # Failed
@@ -1471,12 +1132,6 @@ list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipUserObjectCreate_Negative") # Fail
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipUserObjectRelease_Negative") # Failed
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipUserObjectRetain_Negative") # Failed
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipUserObj_Negative_Test") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_1") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_2") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphReleaseUserObject_Negative") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Basic") # Failed
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Null_Object") # Failed
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - int") # Failed
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - float") # Failed
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - double") # Failed
@@ -1698,7 +1353,6 @@ list(APPEND DGPU_LEVEL0_FAILED_TESTS "hipDynamicShared") # SEGFAULT
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipMemFaultStackAllocation_Check") # SEGFAULT
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "hip_sycl_interop") # SEGFAULT
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "hipKernelLaunchIsNonBlocking") # Timeout
-list(APPEND DGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Functional") # Subprocess aborted
 list(APPEND DGPU_LEVEL0_FAILED_TESTS "syncthreadsExitedThreads") # Timeout
 
 # iGPU Level Zero Unit Test Failures
@@ -1710,72 +1364,6 @@ list(APPEND IGPU_LEVEL0_FAILED_TESTS "cuda-clock") # SEGFAULT
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "cuda-simpleTemplates") # SEGFAULT
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "cuda-simpleCallback") # SEGFAULT
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "cuda-dwtHaar1D") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddEmptyNode_NegTest") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddDependencies_NegTest") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddEventRecordNode_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddEventWaitNode_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraph_BasicFunctional") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraph_SimpleGraphWithKernel") # Subprocess aborted
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNode_BasicFunctional") # Subprocess aborted
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphClone_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_Negative") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_DependencyGraph") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddHostNode_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddHostNode_ClonedGraphwithHostNode") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemory") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalConstMemory") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemoryWithKernel") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphChildGraphNodeGetGraph_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeFindInClone_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_ClonedGraphwithHostNode") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_BasicFunc") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalMemory") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalConstMemory") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_MemcpyToSymbolNodeWithKernel") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphDestroyNode_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphDestroyNode_DestroyDependencyNode") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetNodes_Functional") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetNodes_CapturedStream") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetNodes_ParamValidation") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetRootNodes_Functional") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetRootNodes_CapturedStream") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetRootNodes_ParamValidation") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphHostNodeSetParams_Negative") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemcpyNode1D_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_OrgGraphAsChildGraph") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_CloneChildGraph") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_MultipleChildNodes") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_SingleChildNode") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeGetType_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetEdges_Functionality") # Timeout
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphGetEdges_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Func_StrmCapture") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRemoveDependencies_ChangeComputeFunc") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphInstantiate_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_Basic") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_TypeChange") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecUpdate_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphEventWaitNodeSetEvent_Negative") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemsetNodeGetParams_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemsetNodeSetParams_InvalidParams") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphEventRecordNodeGetEvent_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphEventRecordNodeSetEvent_Negative") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphEventWaitNodeGetEvent_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Functional") # Failed
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamBeginCapture_hipStreamPerThread") # SEGFAULT
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamBeginCapture_Negative") # SEGFAULT
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamBeginCapture_Basic") # Failed
@@ -1806,34 +1394,6 @@ list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_UniqueID") # 
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_ArgValidation") # Failed
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamEndCapture_Negative") # SEGFAULT
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamEndCapture_Thread_Negative") # Subprocess aborted
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_SetAndVerifyMemory") # Timeout
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddMemsetNode_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddKernelNode_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphKernelNodeGetParams_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphKernelNodeGetSetParams_Functional") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphLaunch_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams1D_Negative") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_ParamValidation") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_Functional") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_ParamValidation") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphHostNodeGetParams_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_Negative") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_BasicFunc") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_ChildTopology") # Failed
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_BasicFunctional") # Failed
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_hipStreamPerThread") # SEGFAULT
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_UniqueID") # Failed
@@ -1846,12 +1406,6 @@ list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipUserObjectCreate_Negative") # Fail
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipUserObjectRelease_Negative") # Failed
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipUserObjectRetain_Negative") # Failed
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipUserObj_Negative_Test") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_1") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_2") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphReleaseUserObject_Negative") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Basic") # Failed
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Null_Object") # Failed
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - int") # Failed
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - float") # Failed
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - double") # Failed
@@ -2070,12 +1624,9 @@ list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipPeekAtLastError_Positive_Basic") #
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipPeekAtLastError_Positive_Threaded") # Subprocess aborted
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "hipDynamicShared") # SEGFAULT
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "hipDynamicShared2") # SEGFAULT
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddEventRecordNode_MultipleRun") # Timeout
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphAddEventWaitNode_MultipleRun") # Timeout
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipMemFaultStackAllocation_Check") # SEGFAULT
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "hip_sycl_interop") # SEGFAULT
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "hipKernelLaunchIsNonBlocking") # Timeout
-list(APPEND IGPU_LEVEL0_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Functional") # Subprocess aborted
 list(APPEND IGPU_LEVEL0_FAILED_TESTS "syncthreadsExitedThreads") # Timeout
 list(APPEND IGPU_LEVEL0_FAILED_TESTS
   "Unit_hipMemset3DAsync_ConcurrencyMthread") # Flaky. An event related issue.
@@ -2114,70 +1665,6 @@ list(APPEND CPU_POCL_FAILED_TESTS "cuda-scan") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "cuda-sortnet") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "cuda-FDTD3d") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "cuda-sobolqrng") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddEmptyNode_NegTest") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddDependencies_NegTest") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddEventRecordNode_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddEventWaitNode_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraph_BasicFunctional") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNode_BasicFunctional") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphClone_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_Negative") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphInstantiateWithFlags_DependencyGraph") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddHostNode_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddHostNode_ClonedGraphwithHostNode") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemory") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalConstMemory") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeFromSymbol_GlobalMemoryWithKernel") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphChildGraphNodeGetGraph_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphNodeFindInClone_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_ClonedGraphwithHostNode") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecHostNodeSetParams_BasicFunc") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalMemory") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_GlobalConstMemory") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNodeToSymbol_MemcpyToSymbolNodeWithKernel") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecMemsetNodeSetParams_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsToSymbol_Functional") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphDestroyNode_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphGetNodes_Functional") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphGetNodes_CapturedStream") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphGetNodes_ParamValidation") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_Functional") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_CapturedStream") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphGetRootNodes_ParamValidation") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphHostNodeSetParams_Negative") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddMemcpyNode1D_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_OrgGraphAsChildGraph") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_CloneChildGraph") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_MultipleChildNodes") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddChildGraphNode_SingleChildNode") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphNodeGetType_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams1D_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphGetEdges_Functionality") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphGetEdges_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Func_StrmCapture") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_ChangeComputeFunc") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphRemoveDependencies_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphInstantiate_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_Basic") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Negative_TypeChange") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecUpdate_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecEventRecordNodeSetEvent_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphEventWaitNodeSetEvent_Negative") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemsetNodeGetParams_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemsetNodeSetParams_InvalidParams") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphEventRecordNodeGetEvent_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphEventRecordNodeSetEvent_Negative") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphEventWaitNodeGetEvent_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParams_Functional") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipStreamBeginCapture_hipStreamPerThread") # SEGFAULT
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipStreamBeginCapture_Negative") # SEGFAULT
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipStreamBeginCapture_Basic") # Failed
@@ -2208,35 +1695,6 @@ list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_UniqueID") # Fai
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_ArgValidation") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipStreamEndCapture_Negative") # SEGFAULT
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipStreamEndCapture_Thread_Negative") # Subprocess aborted
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParamsFromSymbol_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_SetAndVerifyMemory") # Timeout
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_VerifyEventNotChanged") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecEventWaitNodeSetEvent_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddMemsetNode_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphAddKernelNode_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeGetParams_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams_Functional") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphKernelNodeGetParams_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphKernelNodeSetParams_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphKernelNodeGetSetParams_Functional") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecKernelNodeSetParams_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphLaunch_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphMemcpyNodeSetParams1D_Negative") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecMemcpyNodeSetParamsToSymbol_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphNodeGetDependentNodes_ParamValidation") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_Functional") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphNodeGetDependencies_ParamValidation") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphHostNodeGetParams_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_Negative") # SEGFAULT
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_BasicFunc") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphExecChildGraphNodeSetParams_ChildTopology") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_BasicFunctional") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_hipStreamPerThread") # SEGFAULT
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipStreamGetCaptureInfo_v2_UniqueID") # Failed
@@ -2249,12 +1707,6 @@ list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipUserObjectCreate_Negative") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipUserObjectRelease_Negative") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipUserObjectRetain_Negative") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipUserObj_Negative_Test") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_1") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Functional_2") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphReleaseUserObject_Negative") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Basic") # Failed
-list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipGraphRetainUserObject_Negative_Null_Object") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - int") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - float") # Failed
 list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipHostRegister_ReferenceFromKernelandhipMemset - double") # Failed
@@ -2475,6 +1927,8 @@ list(APPEND CPU_POCL_FAILED_TESTS "Unit_hipDeviceSynchronize_Functional") # Fail
 list(APPEND CPU_POCL_FAILED_TESTS "syncthreadsExitedThreads") # Timeout
 list(APPEND CPU_POCL_FAILED_TESTS "hip_sycl_interop") # #terminate called after throwing an instance of 'sycl::_V1::runtime_error' what():  No device of requested type available
 list(APPEND CPU_POCL_FAILED_TESTS "hip_sycl_interop_no_buffers") # #terminate called after throwing an instance of 'sycl::_V1::runtime_error' what():  No device of requested type available
+list(APPEND CPU_POCL_FAILED_TESTS "graphMatrixMultiply") # SEGFAULT inside kernel
+
 # broken tests, they all try to write outside allocated memory;
 # valgrind + pocl shows:
 #

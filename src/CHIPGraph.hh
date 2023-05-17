@@ -57,6 +57,8 @@ protected:
 
   CHIPGraphNode(hipGraphNodeType Type) : Type_(Type) {}
 
+  void checkDependencies(size_t numDependencies, CHIPGraphNode **pDependencies);
+
 public:
   std::string Msg; // TODO Graphs cleanup
   CHIPGraphNode(const CHIPGraphNode &Other)
@@ -119,6 +121,9 @@ public:
    * @param TheNode
    */
   void addDependency(CHIPGraphNode *TheNode) {
+    if (TheNode == nullptr)
+      CHIPERR_LOG_AND_THROW("addDependency called with nullptr",
+                            hipErrorInvalidValue);
     logDebug("{} addDependency() <{} depends on {}>", (void *)this, Msg,
              TheNode->Msg);
     Dependencies_.push_back(TheNode);
@@ -133,6 +138,10 @@ public:
    * @param TheNode
    */
   void removeDependency(CHIPGraphNode *TheNode) {
+    if (TheNode == nullptr) {
+      CHIPERR_LOG_AND_THROW("removeDependency called with nullptr",
+                            hipErrorInvalidValue);
+    }
     logDebug("{} removeDependency() <{} depends on {}>", (void *)this, Msg,
              TheNode->Msg);
     auto FoundNode =
@@ -140,7 +149,7 @@ public:
     if (FoundNode != Dependencies_.end()) {
       Dependencies_.erase(FoundNode);
     } else {
-      CHIPERR_LOG_AND_THROW("Failed to find", hipErrorTbd);
+      CHIPERR_LOG_AND_THROW("Failed to find", hipErrorInvalidValue);
     }
   }
 
@@ -152,8 +161,9 @@ public:
    * @param Dependencies
    * @param Count
    */
-  void addDependencies(CHIPGraphNode **Dependencies, int Count) {
-    for (int i = 0; i < Count; i++) {
+  void addDependencies(CHIPGraphNode **Dependencies, size_t Count) {
+    checkDependencies(Count, Dependencies);
+    for (size_t i = 0; i < Count; i++) {
       addDependency(Dependencies[i]);
     }
   }
@@ -178,8 +188,9 @@ public:
    *
    * @param TheNode
    */
-  void removeDependencies(CHIPGraphNode **Dependencies, int Count) {
-    for (int i = 0; i < Count; i++) {
+  void removeDependencies(CHIPGraphNode **Dependencies, size_t Count) {
+    checkDependencies(Count, Dependencies);
+    for (size_t i = 0; i < Count; i++) {
       removeDependency(Dependencies[i]);
     }
   }
@@ -196,7 +207,8 @@ public:
    * @param CloneMap  the map containing relationships of which original node
    * does each cloned node correspond to.
    */
-  void updateDependencies(std::map<CHIPGraphNode *, CHIPGraphNode *> CloneMap) {
+  void
+  updateDependencies(std::map<CHIPGraphNode *, CHIPGraphNode *> &CloneMap) {
     std::vector<CHIPGraphNode *> NewDeps;
     for (auto Dep : Dependencies_) {
       auto ClonedDep = CloneMap[Dep];
@@ -255,6 +267,7 @@ class CHIPGraphNodeKernel : public CHIPGraphNode {
 private:
   hipKernelNodeParams Params_;
   CHIPExecItem *ExecItem_;
+  CHIPKernel *Kernel_;
 
 public:
   CHIPGraphNodeKernel(const CHIPGraphNodeKernel &Other);
@@ -264,13 +277,27 @@ public:
   CHIPGraphNodeKernel(const void *HostFunction, dim3 GridDim, dim3 BlockDim,
                       void **Args, size_t SharedMem);
 
-  virtual ~CHIPGraphNodeKernel() override {}
-
+  virtual ~CHIPGraphNodeKernel() override;
   virtual void execute(CHIPQueue *Queue) const override;
 
   hipKernelNodeParams getParams() const { return Params_; }
 
-  void setParams(const hipKernelNodeParams Params) { Params_ = Params; }
+  /// the Kernel arguments have to be setup either just before launch (when
+  /// using the execute() path), or if using the CHIPGraphNative then
+  /// just before calling their graph construction APIs.
+  ///
+  /// This is because Kernels in both LevelZero and OpenCL are stateful,
+  /// and users can add multiple nodes with the same kernel into a Graph.
+  /// Setting up arguments in CHIPGraphNodeKernel ctor would then
+  /// lead to all nodes using the same (those set up last) arguments.
+  void setupKernelArgs() const;
+  CHIPKernel *getKernel() const { return Kernel_; }
+
+  void setParams(const hipKernelNodeParams Params) {
+    // dont allow changing kernel, needs refactoring
+    CHIPASSERT(Params.func == Params_.func);
+    Params_ = Params;
+  }
   /**
    * @brief Createa a copy of this node
    * Must copy over all the arguments
@@ -298,7 +325,8 @@ public:
         Src_(Other.Src_), Count_(Other.Count_), Kind_(Other.Kind_) {}
 
   CHIPGraphNodeMemcpy(hipMemcpy3DParms Params)
-      : CHIPGraphNode(hipGraphNodeTypeMemcpy), Params_(Params) {}
+      : CHIPGraphNode(hipGraphNodeTypeMemcpy), Params_(Params), Dst_(nullptr),
+        Src_(nullptr), Count_(0), Kind_(hipMemcpyKind::hipMemcpyDefault) {}
   CHIPGraphNodeMemcpy(const hipMemcpy3DParms *Params)
       : CHIPGraphNode(hipGraphNodeTypeMemcpy) {
     setParams(Params);
@@ -320,6 +348,14 @@ public:
     Src_ = Src;
     Count_ = Count;
     Kind_ = Kind;
+  }
+
+  void getParams(void *&Dst, const void *&Src, size_t &Count,
+                 hipMemcpyKind &Kind) {
+    Dst = Dst_;
+    Src = Src_;
+    Count = Count_;
+    Kind = Kind_;
   }
 
   void setParams(const hipMemcpy3DParms *Params) {
@@ -525,6 +561,15 @@ public:
     Symbol_ = const_cast<void *>(Symbol);
     SizeBytes_ = SizeBytes;
     Offset_ = Offset;
+    Kind_ = Kind;
+  }
+
+  void getParams(void *&Dst, const void *&Symbol, size_t &SizeBytes,
+                 size_t &Offset, hipMemcpyKind &Kind) {
+    Dst = Dst_;
+    Symbol = Symbol_;
+    SizeBytes = SizeBytes_;
+    Offset = Offset_;
     Kind = Kind_;
   }
 
@@ -573,6 +618,15 @@ public:
     Symbol_ = const_cast<void *>(Symbol);
     SizeBytes_ = SizeBytes;
     Offset_ = Offset;
+    Kind_ = Kind;
+  }
+
+  void getParams(void *&Src, const void *&Symbol, size_t &SizeBytes,
+                 size_t &Offset, hipMemcpyKind &Kind) {
+    Src = Src_;
+    Symbol = Symbol_;
+    SizeBytes = SizeBytes_;
+    Offset = Offset_;
     Kind = Kind_;
   }
 };
@@ -607,7 +661,8 @@ public:
   std::vector<CHIPGraphNode *> getRootNodes();
   CHIPGraphNode *getClonedNodeFromOriginal(CHIPGraphNode *OriginalNode) {
     if (!CloneMap_.count(OriginalNode)) {
-      CHIPERR_LOG_AND_THROW("Failed to find the node in clone", hipErrorTbd);
+      CHIPERR_LOG_AND_THROW("Failed to find the node in clone",
+                            hipErrorInvalidValue);
     } else {
       return CloneMap_[OriginalNode];
     }
@@ -647,10 +702,24 @@ public:
   }
 };
 
+class CHIPGraphNative {
+protected:
+  bool Finalized;
+
+public:
+  CHIPGraphNative() : Finalized(false){};
+  virtual ~CHIPGraphNative() {}
+  bool isFinalized() { return Finalized; }
+  virtual bool finalize() { return false; }
+  virtual bool addNode(CHIPGraphNode *NewNode) { return false; }
+};
+
 class CHIPGraphExec : public hipGraphExec {
 protected:
   CHIPGraph *OriginalGraph_;
   CHIPGraph CompiledGraph_;
+
+  std::unique_ptr<CHIPGraphNative> NativeGraph;
 
   /**
    * @brief each element in this queue represents represents a sequence of nodes
@@ -678,19 +747,6 @@ protected:
    */
   void pruneGraph_();
 
-public:
-  CHIPGraphExec(CHIPGraph *Graph)
-      : OriginalGraph_(Graph), /* Copy the pointer to the original graph */
-        CompiledGraph_(CHIPGraph(*Graph)) /* invoke the copy constructor to make
-                                             a clone of the graph */
-  {}
-
-  ~CHIPGraphExec() {}
-
-  void launch(CHIPQueue *Queue);
-
-  CHIPGraph *getOriginalGraphPtr() const { return OriginalGraph_; }
-
   /**
    * @brief Optimize and generate ExecQueues_
    *
@@ -701,6 +757,20 @@ public:
    *
    */
   void compile();
+
+public:
+  CHIPGraphExec(CHIPGraph *Graph)
+      : OriginalGraph_(Graph), /* Copy the pointer to the original graph */
+        CompiledGraph_(CHIPGraph(*Graph)) /* invoke the copy constructor to make
+                                             a clone of the graph */
+  {}
+
+  ~CHIPGraphExec() {}
+
+  void launch(CHIPQueue *Queue);
+  bool tryLaunchNative(CHIPQueue *Queue);
+
+  CHIPGraph *getOriginalGraphPtr() const { return OriginalGraph_; }
 };
 
 #endif // include guard
