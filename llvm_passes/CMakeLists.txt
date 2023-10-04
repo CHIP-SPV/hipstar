@@ -66,7 +66,13 @@ else()
   message(STATUS "LLVM built with static libraries -> adding workaround for issue #102")
 
   get_target_property(LLVMCORE_CONF LLVMCore IMPORTED_CONFIGURATIONS)
-  string(REPLACE ";.*$" "" LLVMCORE_CONF "${LLVMCORE_CONF}")
+  set(LLVMCORE_CONF RELWITHDEBINFO)
+  message("conf is ${LLVMCORE_CONF}")
+  #string(REPLACE ";.*$" "" LLVMCORE_CONF "${LLVMCORE_CONF}")
+  #string(REPLACE ";" "" LLVMCORE_CONF "${LLVMCORE_CONF}")
+
+  
+  
   get_target_property(LLVMCORE_PATH LLVMCore IMPORTED_LOCATION_${LLVMCORE_CONF})
   message(STATUS "libLLVMCore CONFIG: ${LLVMCORE_CONF}")
   message(STATUS "libLLVMCore PATH: ${LLVMCORE_PATH}")
@@ -100,6 +106,14 @@ add_library(LLVMHipPasses MODULE HipPasses.cpp
     HipEmitLoweredNames.cpp HipWarps.cpp HipKernelArgSpiller.cpp
     HipLowerZeroLengthArrays.cpp HipSanityChecks.cpp HipLowerSwitch.cpp
     ${EXTRA_OBJS})
+
+# From https://stackoverflow.com/a/48177101
+if (APPLE)
+  target_link_libraries(LLVMHipDynMem "-undefined dynamic_lookup")
+  target_link_libraries(LLVMHipStripUsedIntrinsics "-undefined dynamic_lookup")
+  target_link_libraries(LLVMHipDefrost "-undefined dynamic_lookup")
+  target_link_libraries(LLVMHipPasses "-undefined dynamic_lookup")
+endif()
 
 if("${LLVM_VERSION}" VERSION_GREATER_EQUAL 14.0)
   set_target_properties(LLVMHipPasses PROPERTIES

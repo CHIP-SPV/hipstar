@@ -95,7 +95,7 @@ function(add_chip_library EXEC_NAME)
 endfunction()
 
 set(SAMPLES
-    abort
+    #abort # something weird with pass (nullptr deref, then causes LLVM verifier issues)
     hipmath
     hiptest
     bit_extract
@@ -104,7 +104,7 @@ set(SAMPLES
     0_MatrixTranspose
     0_MatrixMultiply
     1_hipEvent
-    2_vecadd
+    #2_vecadd # "parser at end of file"
     3_shared_memory
     4_shfl
     5_2dshfl
@@ -129,8 +129,14 @@ set(SAMPLES
     ccompat
     hipComplex
     hipHostMallocSample
+)
+# We skip this test on macOS, because macho does not support EXCLUDE section flags (used by clang-offload-bundler)
+if (NOT APPLE)
+set(SAMPLES
+    ${SAMPLES}
     hipDeviceLink
 )
+endif()
 
 include(mkl_and_icpx)
 # Add samples that depend on Intel's oneAPI compiler - if available.

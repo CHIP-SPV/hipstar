@@ -25,7 +25,30 @@
 
 # temporary
 set(CMAKE_WARN_DEPRECATED OFF)
-add_compile_options(-Wno-format-extra-args -mf16c)
+
+# Workaround for https://gitlab.kitware.com/cmake/cmake/-/issues/17702
+#FIXME: For my machine (Apple M1 Max), this just returns ""
+message("ARCH <${CMAKE_SYSTEM_PROCESSOR}> <${CMAKE_HOST_SYSTEM_PROCESSOR}>")
+# From PROCESSOR_ARCHITECTURE, see https://learn.microsoft.com/en-us/windows/win32/winprog64/wow64-implementation-details?redirectedfrom=MSDN
+if ("{CMAKE_SYSTEM_PROCESSOR}" STREQUAL "AMD64")
+  set(ARCH "x64")
+elseif ("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86")
+  set(ARCH "x86")
+# From uname -p
+elseif ("{CMAKE_SYSTEM_PROCESSOR}" STREQUAL "i386")
+  # We can't differentiate x86 or x64, but we guess x64
+  set(ARCH "x64")
+else()
+  set(ARCH "unknown")
+endif()
+
+add_compile_options(-Wno-format-extra-args)
+if("${CMAKE_C_COMPILER_ARCHITECTURE_ID}" STREQUAL "x86")
+  add_compile_options(-mf16c)
+elseif("${CMAKE_C_COMPILER_ARCHITECTURE_ID}" STREQUAL "x64")
+  add_compile_options(-mf16c)
+endif()
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-duplicate-decl-specifier \
 -Wno-tautological-constant-compare  -Wno-c++20-extensions -Wno-unused-result \
@@ -67,13 +90,16 @@ endforeach()
 # chipStar CMAKE DEPENDENCIES
 if(NOT DEFINED OpenCL_LIBRARY)
   message(STATUS "OpenCL_LIBRARY was not set. Searching for libOpenCL.so in LD_LIBRARY_PATH")
-  find_library(OpenCL_LIBRARY NAMES OpenCL PATHS ENV LD_LIBRARY_PATH ./ NO_CACHE)
-  if(OpenCL_LIBRARY)
-    get_filename_component(OpenCL_DIR ${OpenCL_LIBRARY} DIRECTORY CACHE)
-    message(STATUS "Setting OpenCL_DIR to ${OpenCL_DIR}")
-  else()
-    message(STATUS "OpenCL not found")
-  endif()
+  #find_library(OpenCL_LIBRARY NAMES OpenCL PATHS ENV LD_LIBRARY_PATH ./ NO_CACHE)
+
+  find_package(OpenCLHeaders)
+  find_package(OpenCLICDLoader)
+
+  #add_library(OpenCL ALIAS OpenCLICDLoader)
+  message("OpenCL_FOUND: ${OpenCL_FOUND}")
+  set(OpenCL_FOUND ${OpenCLICDLoader_FOUND})
+  message("OpenCL_FOUND: ${OpenCL_FOUND}")
+
 endif()
 
 if(NOT DEFINED LevelZero_LIBRARY)
@@ -114,10 +140,10 @@ if(NOT DEFINED LevelZero_LIBRARY)
   endif()
 endif()
 
-message(STATUS "OpenCL_LIBRARY: ${OpenCL_LIBRARY}")
+message(STATUS "OpenCL_FOUND: ${OpenCL_FOUND}")
 message(STATUS "LevelZero_LIBRARY: ${LevelZero_LIBRARY}")
 
-if(NOT OpenCL_LIBRARY AND NOT LevelZero_LIBRARY)
+if(NOT OpenCL_FOUND AND NOT LevelZero_LIBRARY)
   message(FATAL_ERROR "At least one of OpenCL,Level0 libraries must be available")
 endif()
 
@@ -155,7 +181,7 @@ set(CHIP_SRC
   src/SPIRVFuncInfo.cc
 )
 
-if(OpenCL_LIBRARY)
+if(OpenCL_FOUND)
   list(APPEND CHIP_SRC
     src/backend/OpenCL/CHIPBackendOpenCL.cc
     src/backend/OpenCL/SVMemoryRegion.cc)
@@ -323,18 +349,18 @@ endif()
 if(CHIP_BUILD_SHARED_LIBS)
   message(STATUS "Buiding chipStar as a shared library")
   add_library(CHIP SHARED ${CHIP_SRC})
-  set(CHIP_LIB_NAME "libCHIP.so")
 else()
   message(STATUS "Buiding chipStar as a static library")
   add_library(CHIP STATIC ${CHIP_SRC})
-  set(CHIP_LIB_NAME "libCHIP.a")
 endif()
 
 set(CHIP_INTERFACE_LIBS ${PTHREAD_LIBRARY})
 
-if(OpenCL_LIBRARY)
+if(OpenCL_FOUND)
   list(APPEND CHIP_SPV_DEFINITIONS HAVE_OPENCL)
-  list(PREPEND CHIP_INTERFACE_LIBS ${OpenCL_LIBRARY})
+  list(PREPEND CHIP_INTERFACE_LIBS 
+  #OpenCL::Headers
+   OpenCL::OpenCL)
 endif()
 
 if(LevelZero_LIBRARY)
@@ -462,10 +488,10 @@ set(HIP_OFFLOAD_COMPILE_OPTIONS_BUILD_
 list(APPEND HIP_OFFLOAD_LINK_OPTIONS_INSTALL_ "-L${LIB_INSTALL_DIR}" "-lCHIP")
 list(APPEND HIP_OFFLOAD_LINK_OPTIONS_BUILD_ "-L${CMAKE_BINARY_DIR}" "-lCHIP")
 
-if(OpenCL_LIBRARY)
-  target_link_options(CHIP PUBLIC -Wl,-rpath,${OpenCL_DIR})
-  target_link_directories(CHIP PUBLIC ${OpenCL_DIR})
-  target_link_libraries(CHIP PUBLIC OpenCL)
+if(OpenCL_FOUND)
+  target_link_libraries(CHIP PUBLIC
+  # OpenCL::Headers
+   OpenCL::OpenCL)
 endif()
 
 if(LevelZero_LIBRARY)
@@ -673,7 +699,7 @@ install(TARGETS CHIP
 )
 
 install(FILES ${CMAKE_BINARY_DIR}/include/CHIPSPVConfig.hh DESTINATION ${INCLUDE_INSTALL_DIR})
-install(FILES ${PROJECT_BINARY_DIR}/${CHIP_LIB_NAME} DESTINATION lib)
+install(TARGETS CHIP)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/HIP/include DESTINATION . USE_SOURCE_PERMISSIONS)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include DESTINATION . USE_SOURCE_PERMISSIONS)
 
@@ -720,7 +746,7 @@ endif()
 
 # Short Summary 
 # print if Level Zero or OpenCL are enabbled
-if(OpenCL_LIBRARY)
+if(OpenCL_FOUND)
   message(STATUS "OpenCL is enabled: ${OpenCL_LIBRARY}")
 endif()
 

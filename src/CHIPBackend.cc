@@ -1256,7 +1256,12 @@ void chipstar::Backend::waitForThreadExit() {
    *
    * So we just wait for 0.5 seconds before starting to check for thread exit.
    */
+#if defined(__APPLE__) || defined(__MACOSX)
+  sched_yield();
+#else
   pthread_yield();
+#endif
+
   // TODO fix-255 is there a better way to do this?
   unsigned long long int sleepMicroSeconds = 500000;
   usleep(sleepMicroSeconds);
@@ -1330,7 +1335,7 @@ void chipstar::Backend::setActiveDevice(chipstar::Device *ChipDevice) {
 chipstar::Context *chipstar::Backend::getActiveContext() {
   // assert(ChipCtxStack.size() > 0 && "Context stack is empty");
   if (ChipCtxStack.size() == 0) {
-    logDebug("Context stack is empty for thread {}", pthread_self());
+    logDebug("Context stack is empty for thread {}", getThreadId(pthread_self()));
     ChipCtxStack.push(PrimaryContext);
   }
   return ChipCtxStack.top();
